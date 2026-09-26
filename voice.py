@@ -3,7 +3,10 @@ import re
 import queue
 import threading
 import time
-import speech_recognition as sr
+try:
+    import speech_recognition as sr
+except Exception as e_sr:
+    sr = None
 import config
 
 class VoiceEngine:
@@ -19,10 +22,16 @@ class VoiceEngine:
         self.stop_requested = False
 
         # Initialize Recognizer
-        self.recognizer = sr.Recognizer()
-        self.recognizer.energy_threshold = 300
-        self.recognizer.dynamic_energy_threshold = True
-        self.recognizer.pause_threshold = 0.8
+        if sr:
+            try:
+                self.recognizer = sr.Recognizer()
+                self.recognizer.energy_threshold = 300
+                self.recognizer.dynamic_energy_threshold = True
+                self.recognizer.pause_threshold = 0.8
+            except Exception:
+                self.recognizer = None
+        else:
+            self.recognizer = None
 
         # Start TTS background worker
         self.tts_thread = threading.Thread(target=self._tts_worker, daemon=True)
@@ -139,8 +148,7 @@ class VoiceEngine:
         Listen through the microphone and return transcribed text.
         Returns empty string if speech was not detected or understood.
         """
-        if self.is_speaking:
-            # Don't listen to own voice
+        if not sr or not self.recognizer or self.is_speaking:
             return ""
 
         try:
