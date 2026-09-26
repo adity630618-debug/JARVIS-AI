@@ -6,3 +6,4 @@ google-genai
 gTTS
 jinja2
 SpeechRecognition
+PyAutoGUI

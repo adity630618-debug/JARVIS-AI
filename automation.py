@@ -4,8 +4,10 @@ import subprocess
 import webbrowser
 import urllib.parse
 import datetime
-import psutil
-import pyautogui
+try:
+    import pyautogui
+except Exception:
+    pyautogui = None
 import config
 
 class AutomationEngine:
