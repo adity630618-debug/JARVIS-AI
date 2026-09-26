@@ -1,0 +1,16 @@
+{
+  "short_name": "J.A.R.V.I.S",
+  "name": "J.A.R.V.I.S Mark-VII Assistant",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23050811' stroke='%2300f2fe' stroke-width='4'/><circle cx='50' cy='50' r='25' fill='none' stroke='%2300f2fe' stroke-width='2' stroke-dasharray='4 2'/><circle cx='50' cy='50' r='10' fill='%2300f2fe'/></svg>",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#050811",
+  "theme_color": "#050811",
+  "display": "standalone",
+  "orientation": "portrait"
+}
